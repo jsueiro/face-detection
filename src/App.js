@@ -11,7 +11,7 @@ import './App.css';
 import { editableInputTypes } from '@testing-library/user-event/dist/utils';
 
 const app = new Clarifai.App({
-  apiKey: '66ee5189620c4d1bbb49ad9f8e6d79e2'
+  apiKey: ''
 });
 
 class App extends React.Component {
