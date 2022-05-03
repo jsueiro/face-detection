@@ -128,7 +128,11 @@ class App extends React.Component {
           : (
             route === 'SignIn'
               ? <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
-              : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+              : (
+                route === 'SignOut'
+                  ? <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+                  : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+              )
           )
 
 
