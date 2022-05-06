@@ -2,7 +2,7 @@
 Zero to mastery Full stack bootcamp final project - face detection app.
 When entering the URL of a face image on the input, the app will use the Clarifai API to detect the face if there's any and then draw a box around it. 
 
--- still Work in progress --
+Live demo: [link](https://face-detection-front.herokuapp.com/)
 
 ## Install
 
