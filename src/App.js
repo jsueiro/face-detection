@@ -1,5 +1,4 @@
 import React from 'react';
-import Clarifai from 'clarifai';
 import Navigation from './components/Navigation/Navigation';
 import SignIn from './components/SignIn/SignIn';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
@@ -10,9 +9,6 @@ import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import './App.css';
 import { editableInputTypes } from '@testing-library/user-event/dist/utils';
 
-const app = new Clarifai.App({
-  apiKey: ''
-});
 
 const initialState = {
   input: '',
@@ -79,10 +75,17 @@ class App extends React.Component {
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input })
 
-    app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
+    fetch('https://pure-garden-82302.herokuapp.com/imageurl', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        input: this.state.input
+      })
+    })
+      .then(response => response.json())
       .then(response => {
         if (response) {
-          fetch('http://localhost:3430/image', {
+          fetch('https://pure-garden-82302.herokuapp.com/image', {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
